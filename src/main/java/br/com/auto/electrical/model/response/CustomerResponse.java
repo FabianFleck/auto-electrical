@@ -13,13 +13,4 @@ public record CustomerResponse(
         LocalDateTime creationDate,
         LocalDateTime updateDate
 ) {
-    public CustomerResponse(CustomerEntity entity) {
-        this(entity.getId(),
-                entity.getName(),
-                entity.getDocument(),
-                entity.getPhone(),
-                entity.getEmail(),
-                entity.getCreationDate(),
-                entity.getUpdateDate());
-    }
 }

@@ -1,6 +1,7 @@
 package br.com.auto.electrical.resource;
 
 import br.com.auto.electrical.model.request.CustomerRequest;
+import br.com.auto.electrical.model.request.CustomerUpdateRequest;
 import br.com.auto.electrical.model.response.CustomerResponse;
 import br.com.auto.electrical.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,5 +37,11 @@ public class CustomerResource {
             @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(service.getCustomers(id, name, document, phone, email, pageable));
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update Customer details", description = "Update existing customer details by ID")
+    public ResponseEntity<CustomerResponse> updateCustomer(@PathVariable Long id, @RequestBody CustomerUpdateRequest request) {
+        return ResponseEntity.ok(service.updateCustomer(id, request));
     }
 }

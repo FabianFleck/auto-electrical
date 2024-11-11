@@ -1,6 +1,5 @@
 package br.com.auto.electrical.model.entity;
 
-import br.com.auto.electrical.model.request.CustomerRequest;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -19,15 +18,6 @@ public class CustomerEntity {
     private String email;
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
-
-    public CustomerEntity(CustomerRequest request) {
-        this.name = request.name();
-        this.document = request.document();
-        this.phone = request.phone();
-        this.email = request.email();
-        this.creationDate = LocalDateTime.now();
-        this.updateDate = LocalDateTime.now();
-    }
 
     public CustomerEntity() {
     }

@@ -1,8 +1,7 @@
 package br.com.auto.electrical.model.request;
 
-public record CustomerRequest(
+public record CustomerUpdateRequest(
         String name,
-        Long document,
         Long phone,
         String email
 ) {
