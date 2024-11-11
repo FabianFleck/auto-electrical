@@ -1,5 +1,6 @@
 package br.com.auto.electrical.service;
 
+import br.com.auto.electrical.error.exception.UnprocessableEntityException;
 import br.com.auto.electrical.model.entity.CustomerEntity;
 import br.com.auto.electrical.model.request.CustomerRequest;
 import br.com.auto.electrical.model.response.CustomerResponse;
@@ -15,7 +16,7 @@ public class CustomerService {
 
     public CustomerResponse create(CustomerRequest request) {
         if (repository.findByDocument(request.document()).isPresent()) {
-            throw new RuntimeException("Cliente já existe");
+            throw new UnprocessableEntityException("Cliente já existe");
         }
         return new CustomerResponse(
                 repository.save(
