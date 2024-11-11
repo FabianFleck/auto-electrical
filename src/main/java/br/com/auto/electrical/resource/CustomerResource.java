@@ -44,4 +44,11 @@ public class CustomerResource {
     public ResponseEntity<CustomerResponse> updateCustomer(@PathVariable Long id, @RequestBody CustomerUpdateRequest request) {
         return ResponseEntity.ok(service.updateCustomer(id, request));
     }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete customer by ID", description = "Delete a customer by its ID")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
+        service.deleteCustomer(id);
+        return ResponseEntity.noContent().build();
+    }
 }

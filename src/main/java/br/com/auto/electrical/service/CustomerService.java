@@ -48,4 +48,9 @@ public class CustomerService {
         return repository.findById(id)
                 .orElseThrow(() -> new UnprocessableEntityException("Cliente não existe com id: " + id));
     }
+
+    public void deleteCustomer(Long id) {
+        findById(id);
+        repository.deleteById(id);
+    }
 }
