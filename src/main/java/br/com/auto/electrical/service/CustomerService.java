@@ -31,7 +31,7 @@ public class CustomerService {
         );
     }
 
-    public Page<CustomerResponse> getCustomers(Long id, String name, Long document, Long phone, String email, Pageable pageable) {
+    public Page<CustomerResponse> getCustomers(Long id, String name, String document, String phone, String email, Pageable pageable) {
         return repository.findByFilters(id, name, document, phone, email, pageable)
                 .map(mapper::toResponse);
     }

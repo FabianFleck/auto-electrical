@@ -1,6 +1,7 @@
 package br.com.auto.electrical.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,8 +15,10 @@ public class CustomerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Long document;
-    private Long phone;
+    @Pattern(regexp = "\\d{11}|\\d{14}", message = "Documento deve ser CPF ou CNPJ")
+    private String document;
+    @Pattern(regexp = "\\d{10,11}", message = "Telefone deve ter entre 10 a 11 dígitos")
+    private String phone;
     private String email;
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
@@ -42,19 +45,19 @@ public class CustomerEntity {
         this.name = name;
     }
 
-    public Long getDocument() {
+    public String getDocument() {
         return document;
     }
 
-    public void setDocument(Long document) {
+    public void setDocument(String document) {
         this.document = document;
     }
 
-    public Long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

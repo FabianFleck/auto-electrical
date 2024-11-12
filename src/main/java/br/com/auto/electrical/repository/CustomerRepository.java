@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
-    Optional<CustomerEntity> findByDocument(Long document);
+    Optional<CustomerEntity> findByDocument(String document);
 
     @Query("SELECT c FROM CustomerEntity c WHERE " +
             "(:id IS NULL OR c.id = :id) AND " +
@@ -23,8 +23,8 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> 
     Page<CustomerEntity> findByFilters(
             @Param("id") Long id,
             @Param("name") String name,
-            @Param("document") Long document,
-            @Param("phone") Long phone,
+            @Param("document") String document,
+            @Param("phone") String phone,
             @Param("email") String email,
             Pageable pageable);
 }

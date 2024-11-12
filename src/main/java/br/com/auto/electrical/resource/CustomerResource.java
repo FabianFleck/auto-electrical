@@ -30,8 +30,8 @@ public class CustomerResource {
     public ResponseEntity<Page<CustomerResponse>> getAll(
             @RequestParam(required = false) Long id,
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) Long document,
-            @RequestParam(required = false) Long phone,
+            @RequestParam(required = false) String document,
+            @RequestParam(required = false) String phone,
             @RequestParam(required = false) String email,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
