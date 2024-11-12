@@ -3,10 +3,11 @@ package br.com.auto.electrical.model.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "clients")
+@Table(name = "customers")
 public class CustomerEntity {
 
     @Id
@@ -18,6 +19,9 @@ public class CustomerEntity {
     private String email;
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
+
+    @OneToMany(mappedBy = "customer")
+    private List<CarEntity> cars;
 
     public CustomerEntity() {
     }
@@ -78,16 +82,24 @@ public class CustomerEntity {
         this.updateDate = updateDate;
     }
 
+    public List<CarEntity> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<CarEntity> cars) {
+        this.cars = cars;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomerEntity that = (CustomerEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(document, that.document) && Objects.equals(phone, that.phone) && Objects.equals(email, that.email) && Objects.equals(creationDate, that.creationDate) && Objects.equals(updateDate, that.updateDate);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(document, that.document) && Objects.equals(phone, that.phone) && Objects.equals(email, that.email) && Objects.equals(creationDate, that.creationDate) && Objects.equals(updateDate, that.updateDate) && Objects.equals(cars, that.cars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, document, phone, email, creationDate, updateDate);
+        return Objects.hash(id, name, document, phone, email, creationDate, updateDate, cars);
     }
 }

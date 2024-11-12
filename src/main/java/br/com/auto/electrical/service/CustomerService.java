@@ -44,7 +44,7 @@ public class CustomerService {
         return mapper.toResponse(repository.save(existingClient));
     }
 
-    private CustomerEntity findById(Long id) {
+    public CustomerEntity findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new UnprocessableEntityException("Cliente não existe com id: " + id));
     }
