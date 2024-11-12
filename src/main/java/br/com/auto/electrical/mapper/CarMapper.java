@@ -7,6 +7,7 @@ import br.com.auto.electrical.model.response.CarResponse;
 import br.com.auto.electrical.model.response.CustomerResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,11 @@ public interface CarMapper {
     @Mapping(target = "creationDate", expression = "java(localDateTimeNow())")
     @Mapping(target = "updateDate", expression = "java(localDateTimeNow())")
     CarEntity toEntity(CarRequest request, CustomerEntity customer);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "creationDate", ignore = true)
+    @Mapping(target = "updateDate", expression = "java(localDateTimeNow())")
+    void toEntity(CarRequest request, @MappingTarget CarEntity entity);
 
     @Named("localDateTimeNow")
     default LocalDateTime localDateTimeNow() {

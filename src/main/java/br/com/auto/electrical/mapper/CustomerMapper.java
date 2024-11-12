@@ -17,11 +17,14 @@ public interface CustomerMapper {
     CustomerResponse toResponse(CustomerEntity entity);
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "document", ignore = true)
+    @Mapping(target = "cars", ignore = true)
     @Mapping(target = "creationDate", ignore = true)
     @Mapping(target = "updateDate", expression = "java(localDateTimeNow())")
-    void toEntity(CustomerUpdateRequest clientRequestDTO, @MappingTarget CustomerEntity entity);
+    void toEntity(CustomerUpdateRequest clientRequest, @MappingTarget CustomerEntity entity);
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "cars", ignore = true)
     @Mapping(target = "creationDate", expression = "java(localDateTimeNow())")
     @Mapping(target = "updateDate", expression = "java(localDateTimeNow())")
     CustomerEntity toEntity(CustomerRequest request);
