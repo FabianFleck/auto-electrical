@@ -6,15 +6,14 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record ServiceCarResponse(
+public record ServiceCarSimpleResponse(
         String description,
-        CustomerResponse customer,
-        CarResponse car,
-        Integer guarantee,
         BigDecimal totalValue,
         ServiceCarStatusEnum status,
         LocalDateTime creationDate,
         LocalDateTime updateDate,
+        CustomerSimpleResponse customer,
+        CarSimpleResponse car,
         List<ServiceCarProductResponse> products
 ) {
 }

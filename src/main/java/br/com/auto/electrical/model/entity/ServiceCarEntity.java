@@ -3,7 +3,7 @@ package br.com.auto.electrical.model.entity;
 import br.com.auto.electrical.model.enumeration.ServiceCarStatusEnum;
 import jakarta.persistence.*;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class ServiceCarEntity {
     private String description;
     private LocalDate date;
     private Integer guarantee;
-    private BigInteger totalValue;
+    private BigDecimal totalValue;
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
     @Enumerated(EnumType.STRING)
@@ -64,11 +64,11 @@ public class ServiceCarEntity {
         this.guarantee = guarantee;
     }
 
-    public BigInteger getTotalValue() {
+    public BigDecimal getTotalValue() {
         return totalValue;
     }
 
-    public void setTotalValue(BigInteger totalValue) {
+    public void setTotalValue(BigDecimal totalValue) {
         this.totalValue = totalValue;
     }
 

@@ -1,11 +1,17 @@
 package br.com.auto.electrical.model.request;
 
-import java.math.BigInteger;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+import java.math.BigDecimal;
 
 public record ServiceCarProductRequest(
-        Integer quantity,
+        @Schema(description = "Descrição do produto", example = "Troca de óleo do civic")
         String description,
-        BigInteger unitValue,
-        BigInteger totalValue
+        @Schema(description = "Quantidade do produto", example = "1")
+        Integer quantity,
+        @Schema(description = "Valor unitário do produto", example = "99.90")
+        BigDecimal unitValue,
+        @Schema(description = "Valor total do produto (quantidade vezes o valor unitário)", example = "99.90")
+        BigDecimal totalValue
 ) {
 }

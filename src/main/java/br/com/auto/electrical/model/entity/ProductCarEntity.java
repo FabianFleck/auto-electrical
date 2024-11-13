@@ -2,7 +2,7 @@ package br.com.auto.electrical.model.entity;
 
 import jakarta.persistence.*;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "product_cars")
@@ -12,8 +12,8 @@ public class ProductCarEntity {
     private Long id;
     private String description;
     private Integer quantity;
-    private BigInteger unitValue;
-    private BigInteger totalValue;
+    private BigDecimal unitValue;
+    private BigDecimal totalValue;
     @ManyToOne
     @JoinColumn(name = "service_car_id", nullable = false)
     private ServiceCarEntity serviceCar;
@@ -42,19 +42,19 @@ public class ProductCarEntity {
         this.quantity = quantity;
     }
 
-    public BigInteger getUnitValue() {
+    public BigDecimal getUnitValue() {
         return unitValue;
     }
 
-    public void setUnitValue(BigInteger unitValue) {
+    public void setUnitValue(BigDecimal unitValue) {
         this.unitValue = unitValue;
     }
 
-    public BigInteger getTotalValue() {
+    public BigDecimal getTotalValue() {
         return totalValue;
     }
 
-    public void setTotalValue(BigInteger totalValue) {
+    public void setTotalValue(BigDecimal totalValue) {
         this.totalValue = totalValue;
     }
 

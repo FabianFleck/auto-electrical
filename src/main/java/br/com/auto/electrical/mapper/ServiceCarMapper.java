@@ -7,6 +7,7 @@ import br.com.auto.electrical.model.entity.ServiceCarEntity;
 import br.com.auto.electrical.model.request.ServiceCarProductRequest;
 import br.com.auto.electrical.model.request.ServiceCarRequest;
 import br.com.auto.electrical.model.response.ServiceCarResponse;
+import br.com.auto.electrical.model.response.ServiceCarSimpleResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -35,6 +36,8 @@ public interface ServiceCarMapper {
     default LocalDate localDateNow() {
         return LocalDate.now();
     }
+
+    ServiceCarSimpleResponse toSimpleResponse(ServiceCarEntity save);
 
     ServiceCarResponse toResponse(ServiceCarEntity save);
 

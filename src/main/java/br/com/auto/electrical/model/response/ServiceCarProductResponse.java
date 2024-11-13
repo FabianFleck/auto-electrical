@@ -1,12 +1,12 @@
 package br.com.auto.electrical.model.response;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 public record ServiceCarProductResponse(
         Long id,
         Integer quantity,
         String description,
-        BigInteger unitValue,
-        BigInteger totalValue
+        BigDecimal unitValue,
+        BigDecimal totalValue
 ) {
 }

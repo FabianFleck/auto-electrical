@@ -5,11 +5,17 @@ import br.com.auto.electrical.model.entity.CarEntity;
 import br.com.auto.electrical.model.entity.CustomerEntity;
 import br.com.auto.electrical.model.entity.ProductCarEntity;
 import br.com.auto.electrical.model.entity.ServiceCarEntity;
+import br.com.auto.electrical.model.enumeration.ServiceCarStatusEnum;
 import br.com.auto.electrical.model.request.ServiceCarRequest;
 import br.com.auto.electrical.model.response.ServiceCarResponse;
+import br.com.auto.electrical.model.response.ServiceCarSimpleResponse;
 import br.com.auto.electrical.repository.ServiceCarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class ServiceCarService {
@@ -37,5 +43,25 @@ public class ServiceCarService {
         ServiceCarEntity save = repository.save(entity);
 
         return mapper.toResponse(save);
+    }
+
+    public Page<ServiceCarSimpleResponse> getServicesCar(
+            Long id,
+            Long customerId,
+            Long carId,
+            String description,
+            ServiceCarStatusEnum status,
+            LocalDateTime startDate,
+            LocalDateTime endDate,
+            Pageable pageable) {
+        return repository.findByFilters(id,
+                        customerId,
+                        carId,
+                        description,
+                        status,
+                        startDate,
+                        endDate,
+                        pageable)
+                .map(mapper::toSimpleResponse);
     }
 }
