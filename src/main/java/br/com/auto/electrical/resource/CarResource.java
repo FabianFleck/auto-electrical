@@ -5,6 +5,7 @@ import br.com.auto.electrical.model.request.CarRequest;
 import br.com.auto.electrical.model.response.CarResponse;
 import br.com.auto.electrical.service.CarService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Tag(name = "Car")
 @RequestMapping("/api/v1/car")
 public class CarResource {
 
