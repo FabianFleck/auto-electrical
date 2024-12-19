@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Tag(name = "Customer")
 @RequestMapping("/api/v1/customer")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CustomerResource {
 
     @Autowired

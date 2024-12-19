@@ -45,4 +45,10 @@ public class ServiceCarResource {
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(service.getServicesCar(id, customerId, carId, description, status, startDate, endDate, pageable));
     }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get service car by id", description = "Retrieve a service car by id")
+    public ResponseEntity<ServiceCarResponse> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getById(id));
+    }
 }

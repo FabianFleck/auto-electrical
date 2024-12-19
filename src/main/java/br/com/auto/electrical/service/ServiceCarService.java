@@ -1,5 +1,6 @@
 package br.com.auto.electrical.service;
 
+import br.com.auto.electrical.error.exception.UnprocessableEntityException;
 import br.com.auto.electrical.mapper.ServiceCarMapper;
 import br.com.auto.electrical.model.entity.CarEntity;
 import br.com.auto.electrical.model.entity.CustomerEntity;
@@ -63,5 +64,14 @@ public class ServiceCarService {
                         endDate,
                         pageable)
                 .map(mapper::toSimpleResponse);
+    }
+
+    public ServiceCarResponse getById(Long id) {
+        return mapper.toResponse(findById(id));
+    }
+
+    public ServiceCarEntity findById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new UnprocessableEntityException("Serviço não existe com id " + id));
     }
 }
